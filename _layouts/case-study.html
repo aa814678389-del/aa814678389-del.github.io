@@ -1,0 +1,65 @@
+---
+layout: base
+---
+{%- comment -%} Build "On this page" from the ## headings in the Markdown, server-side. {%- endcomment -%}
+{%- assign h2_parts = content | split: '<h2 id="' -%}
+
+<article class="case-study">
+  <header class="cs-header wrap">
+    <p class="label"><a href="{{ '/#work' | relative_url }}">Selected work</a> <span aria-hidden="true">/</span> Case study</p>
+    <h1 class="cs-title">{{ page.title }}</h1>
+    {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+
+    <section class="glance" aria-labelledby="glance-heading">
+      <h2 id="glance-heading" class="visually-hidden">At a glance</h2>
+      <dl class="glance__facts">
+        {% if page.role %}<div><dt>Role</dt><dd>{{ page.role }}</dd></div>{% endif %}
+        {% if page.team %}<div><dt>Team</dt><dd>{{ page.team }}</dd></div>{% endif %}
+        {% if page.timeline %}<div><dt>Timeline</dt><dd>{{ page.timeline }}</dd></div>{% endif %}
+        {% if page.tags %}<div><dt>Disciplines</dt><dd>{{ page.tags | join: ", " }}</dd></div>{% endif %}
+        {% if page.scope %}<div><dt>Scope</dt><dd>{{ page.scope }}</dd></div>{% endif %}
+      </dl>
+      {% include metrics.html %}
+    </section>
+  </header>
+
+  {% if page.cover %}
+  <div class="wrap cs-cover">
+    {% include figure.html src=page.cover alt=page.cover_alt width=page.cover_width height=page.cover_height avif=page.cover_avif panel=page.cover_panel caption=page.cover_caption eager="true" %}
+  </div>
+  {% endif %}
+
+  <div class="wrap cs-body">
+    {% if h2_parts.size > 2 %}
+    <nav class="toc" aria-labelledby="toc-heading">
+      <h2 id="toc-heading" class="label">On this page</h2>
+      <ol>
+        {%- for part in h2_parts offset: 1 -%}
+        {%- assign id = part | split: '"' | first -%}
+        {%- assign text = part | split: '</h2>' | first | prepend: '<h2 id="' | strip_html -%}
+        <li><a href="#{{ id }}">{{ text }}</a></li>
+        {%- endfor -%}
+      </ol>
+    </nav>
+    {% endif %}
+
+    <div class="prose cs-prose">
+      {{ content }}
+    </div>
+  </div>
+
+  {%- assign studies = site.case_studies | sort: 'order' -%}
+  {%- for s in studies -%}{%- if s.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+  {%- assign next_idx = idx | plus: 1 -%}
+  {%- if next_idx >= studies.size -%}{%- assign next_idx = 0 -%}{%- endif -%}
+  {%- assign next = studies[next_idx] -%}
+
+  <footer class="wrap cs-footer">
+    {% if next and next.url != page.url %}
+    <a class="next-study" href="{{ next.url | relative_url }}">
+      <span class="label">Next case study</span>
+      <span class="next-study__title">{{ next.title }}</span>
+    </a>
+    {% endif %}
+  </footer>
+</article>

@@ -1,0 +1,6 @@
+{%- comment -%}
+  A visible note to yourself inside a case study. It renders as a yellow box in the
+  preview, and the check script blocks publishing until you delete the line.
+  {% include todo.html note="TODO (Roblox review): confirm this diagram is cleared to share." %}
+{%- endcomment -%}
+<aside class="todo-note" role="note"><strong>Before publishing:</strong> {{ include.note }}</aside>

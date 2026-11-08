@@ -1,0 +1,46 @@
+# ─────────────────────────────────────────────
+# Site settings: edit these once.
+# After editing this file, GitHub rebuilds the site automatically.
+# ─────────────────────────────────────────────
+title: Andrew Gendel
+tagline: Product designer · Design systems & AI-ready documentation
+description: >-
+  Andrew Gendel is a product designer who builds design systems that work for
+  both people and AI agents: documentation, standards, naming, and governance.
+url: "https://agendeldesign.com"
+baseurl: ""
+lang: en
+
+author:
+  name: Andrew Gendel   # used for search/link previews. Contact details live in _data/profile.yml
+
+# ─── Case studies live in /_case_studies as Markdown files ───
+collections:
+  case_studies:
+    output: true
+    permalink: /work/:name/
+
+defaults:
+  - scope: { path: "", type: case_studies }
+    values: { layout: case-study }
+  - scope: { path: "" }
+    values: { layout: page }
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
+  - scripts

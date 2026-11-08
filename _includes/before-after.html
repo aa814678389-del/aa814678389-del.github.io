@@ -1,0 +1,24 @@
+{%- comment -%}
+  Before/after comparison. Side by side on wide screens, stacked on phones.
+
+  Required: before, before_alt, after, after_alt, width, height (both images should share one size)
+  Optional: caption, before_label (default "Before"), after_label (default "After"), panel="true"
+
+  {% include before-after.html before="/assets/img/slug/before.png" before_alt="…" after="/assets/img/slug/after.png" after_alt="…" width="1200" height="800" caption="…" %}
+{%- endcomment -%}
+{%- if include.before_alt == nil or include.after_alt == nil -%}
+<p class="authoring-warning" role="note"><strong>Missing alt text</strong> in a before/after comparison. Add before_alt and after_alt.</p>
+{%- endif -%}
+<figure class="before-after figure--wide">
+<div class="before-after__grid">
+<div class="before-after__item{% if include.panel %} figure--panel{% endif %}">
+<p class="label before-after__label">{{ include.before_label | default: "Before" }}</p>
+<img src="{{ include.before | relative_url }}" alt="{{ include.before_alt | escape }}" width="{{ include.width }}" height="{{ include.height }}" loading="lazy" decoding="async">
+</div>
+<div class="before-after__item{% if include.panel %} figure--panel{% endif %}">
+<p class="label before-after__label before-after__label--after">{{ include.after_label | default: "After" }}</p>
+<img src="{{ include.after | relative_url }}" alt="{{ include.after_alt | escape }}" width="{{ include.width }}" height="{{ include.height }}" loading="lazy" decoding="async">
+</div>
+</div>
+{%- if include.caption %}<figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>{% endif -%}
+</figure>

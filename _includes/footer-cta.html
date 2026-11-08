@@ -1,0 +1,18 @@
+{%- assign profile = site.data.profile -%}
+<footer class="site-footer" id="contact" tabindex="-1" aria-labelledby="contact-heading">
+  <div class="wrap">
+    <div class="cta reveal">
+      <h2 id="contact-heading" class="cta__heading">{{ profile.cta_heading }}</h2>
+      <p class="cta__text">{{ profile.cta_text }}</p>
+      <ul class="cta__links">
+        <li><a class="cta__link" href="mailto:{{ profile.email }}"><span class="label">Email</span><span class="cta__value">{{ profile.email }}</span></a></li>
+        <li><a class="cta__link" href="{{ profile.linkedin }}"><span class="label">LinkedIn</span><span class="cta__value">{{ profile.linkedin | remove: 'https://' | remove: 'www.' | remove: 'linkedin.com/in/' | remove: '/' | prepend: 'in/' }}</span></a></li>
+        <li><a class="cta__link" href="{{ profile.resume | relative_url }}"><span class="label">Resume</span><span class="cta__value">Download PDF</span></a></li>
+      </ul>
+    </div>
+    <div class="site-footer__meta">
+      <p>© {{ 'now' | date: '%Y' }} {{ profile.name }}</p>
+      <p><a href="#main">Back to top</a></p>
+    </div>
+  </div>
+</footer>

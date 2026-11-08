@@ -1,0 +1,43 @@
+# Builds and publishes the site to GitHub Pages on every push to main.
+# The "Pre-publish check" step stops the deploy if any [X%], TODO, placeholder
+# LinkedIn URL, or placeholder resume is still in the site.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pre-publish check
+        run: bash scripts/check.sh
+      - uses: actions/configure-pages@v5
+      - name: Build with Jekyll (same engine GitHub Pages uses)
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

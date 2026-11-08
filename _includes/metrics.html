@@ -1,0 +1,17 @@
+{%- comment -%}
+  Row of 2–4 big-number stat tiles.
+  Uses the page's `metrics:` list by default, or pass your own:  {% include metrics.html items=page.extra_metrics %}
+  Each item: { value: "92%", label: "teams on the system", note: "optional small print" }
+{%- endcomment -%}
+{%- assign items = include.items | default: page.metrics -%}
+{%- if items and items.size > 0 -%}
+<dl class="metrics{% if include.compact %} metrics--compact{% endif %}">
+{%- for m in items -%}
+<div class="metric">
+<dt class="metric__label">{{ m.label }}</dt>
+<dd class="metric__value">{{ m.value }}</dd>
+{%- if m.note %}<dd class="metric__note">{{ m.note }}</dd>{% endif -%}
+</div>
+{%- endfor -%}
+</dl>
+{%- endif -%}

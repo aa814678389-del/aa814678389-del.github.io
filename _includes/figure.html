@@ -1,0 +1,22 @@
+{%- comment -%}
+  Image or diagram with caption.
+
+  Required: src, alt, width, height (the image's real pixel size: prevents layout jump)
+  Optional: caption, avif (path to an .avif version), webp (path to a .webp version),
+            panel="true" (put diagrams on a tinted "paper" panel, recommended for SVG/PNG diagrams),
+            wide="true" (break out wider than the text column), eager="true" (load immediately, for images near the top)
+  Decorative image? Pass alt="" on purpose. Leaving alt out shows a warning box.
+
+  {% include figure.html src="/assets/img/slug/diagram.svg" alt="…" width="1200" height="675" caption="…" panel="true" %}
+{%- endcomment -%}
+{%- if include.alt == nil -%}
+<p class="authoring-warning" role="note"><strong>Missing alt text</strong> for {{ include.src }}. Add alt="…" (or alt="" if purely decorative).</p>
+{%- endif -%}
+<figure class="figure{% if include.panel %} figure--panel{% endif %}{% if include.wide %} figure--wide{% endif %}">
+<picture>
+{%- if include.avif %}<source srcset="{{ include.avif | relative_url }}" type="image/avif">{% endif -%}
+{%- if include.webp %}<source srcset="{{ include.webp | relative_url }}" type="image/webp">{% endif -%}
+<img src="{{ include.src | relative_url }}" alt="{{ include.alt | escape }}" width="{{ include.width }}" height="{{ include.height }}" {% if include.eager %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+</picture>
+{%- if include.caption %}<figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>{% endif -%}
+</figure>

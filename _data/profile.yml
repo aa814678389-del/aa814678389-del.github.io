@@ -1,0 +1,22 @@
+# ─────────────────────────────────────────────
+# Your details. Everything on the home page and footer reads from here.
+# ─────────────────────────────────────────────
+name: Andrew Gendel
+eyebrow: Product designer · Design systems & AI-ready documentation
+
+hero: I build design systems that work for people and for AI agents.
+
+bio: >-
+  I'm a product designer who builds design systems that work for both people
+  and AI agents. At Roblox, I own the Foundation Design Kit's documentation and
+  standards, including the pipeline that feeds Design Assist, so generated
+  designs match what's in Figma, web, and Luau. I care about standards, naming,
+  and governance that help teams ship consistent products.
+
+email: agendel.design@gmail.com
+linkedin: https://www.linkedin.com/in/YOUR-HANDLE   # TODO: replace with your LinkedIn URL
+resume: /assets/resume/andrew-gendel-resume.pdf
+
+# Footer call to action
+cta_heading: Let's talk.
+cta_text: I'm open to Senior Design Systems and Content Foundations roles.

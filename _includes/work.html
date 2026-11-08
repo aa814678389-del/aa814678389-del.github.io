@@ -1,0 +1,15 @@
+{%- assign featured = site.case_studies | where: "featured", true | sort: "order" -%}
+<section id="work" class="section wrap" aria-labelledby="work-heading" tabindex="-1">
+  <div class="section-heading reveal">
+    <h2 id="work-heading">Selected work</h2>
+    <p class="label">{{ featured.size }} case studies</p>
+  </div>
+
+  <ol class="work-list" role="list">
+    {%- for study in featured %}
+    <li class="reveal">
+      {% include work-card.html study=study eager=forloop.first %}
+    </li>
+    {%- endfor %}
+  </ol>
+</section>

@@ -1,0 +1,35 @@
+{%- comment -%}
+  One card in "Selected work". Reads the case study's front matter:
+  title, summary, tags, metrics, cover (+ cover_width/height/avif), thumb_video (+ thumb_video_mp4).
+  A video only plays while the card is hovered or focused, and never with reduced motion.
+{%- endcomment -%}
+{%- assign study = include.study -%}
+<article class="card">
+  <div class="card__media">
+    {%- if study.thumb_video %}
+    <video class="card__video" muted loop playsinline preload="none" poster="{{ study.cover | relative_url }}" width="{{ study.cover_width }}" height="{{ study.cover_height }}" aria-hidden="true" tabindex="-1" data-hover-play>
+      <source src="{{ study.thumb_video | relative_url }}" type="video/webm">
+      {%- if study.thumb_video_mp4 %}<source src="{{ study.thumb_video_mp4 | relative_url }}" type="video/mp4">{% endif %}
+    </video>
+    {%- else %}
+    <picture>
+      {%- if study.cover_avif %}<source srcset="{{ study.cover_avif | relative_url }}" type="image/avif">{% endif %}
+      <img src="{{ study.cover | relative_url }}" alt="" width="{{ study.cover_width }}" height="{{ study.cover_height }}" {% if include.eager %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+    </picture>
+    {%- endif %}
+  </div>
+  <div class="card__body">
+    {%- if study.tags %}
+    <ul class="tags" aria-label="Disciplines">
+      {%- for tag in study.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
+    </ul>
+    {%- endif %}
+    <h3 class="card__title">{{ study.title }}</h3>
+    <p class="card__summary">{{ study.summary }}</p>
+    {%- assign m = study.metrics | first -%}
+    {%- if m %}
+    <p class="card__metric"><span class="card__metric-value">{{ m.value }}</span> <span class="card__metric-label">{{ m.label }}</span></p>
+    {%- endif %}
+    <a class="card__link" href="{{ study.url | relative_url }}">Read more<span class="visually-hidden">: {{ study.title }}</span> <span aria-hidden="true">→</span></a>
+  </div>
+</article>
