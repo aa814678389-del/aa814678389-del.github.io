@@ -1,0 +1,26 @@
+{%- comment -%}
+  Full-screen menu. A native modal <dialog>: the rest of the page is inert while it's
+  open (focus stays inside), Escape closes it, and focus returns to the Menu button.
+  Without JavaScript the links still work: the Menu button is hidden and the footer has every link.
+{%- endcomment -%}
+{%- assign profile = site.data.profile -%}
+<dialog class="menu" id="site-menu" aria-label="Site menu">
+  <div class="menu__inner">
+    <div class="menu__top label">
+      <span>{{ profile.name }}</span>
+      <button class="menu__close label" type="button">Close <span aria-hidden="true">✕</span></button>
+    </div>
+    <nav aria-label="Main">
+      <ul class="menu__list" role="list">
+        <li><a href="{{ '/#work' | relative_url }}">Work</a></li>
+        <li><a href="{{ '/#bio' | relative_url }}">Bio</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="{{ profile.resume | relative_url }}">Resume <span class="visually-hidden">(PDF)</span></a></li>
+      </ul>
+    </nav>
+    <div class="menu__foot label">
+      <span>{{ profile.location }}</span>
+      {% include theme-toggle.html %}
+    </div>
+  </div>
+</dialog>

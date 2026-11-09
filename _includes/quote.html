@@ -1,0 +1,5 @@
+{%- comment -%} Pull quote.  {% include quote.html text="…" cite="Name, role" %} {%- endcomment -%}
+<figure class="pullquote">
+<blockquote><p>{{ include.text }}</p></blockquote>
+{%- if include.cite %}<figcaption class="label">{{ include.cite }}</figcaption>{% endif %}
+</figure>

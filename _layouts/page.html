@@ -4,8 +4,8 @@ layout: base
 <article class="page wrap">
   <header class="page-header">
     {% if page.eyebrow %}<p class="label">{{ page.eyebrow }}</p>{% endif %}
-    <h1>{{ page.heading | default: page.title }}</h1>
-    {% if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
+    <h1 class="page-title">{{ page.heading | default: page.title }}</h1>
+    {% if page.lead %}<p class="lede">{{ page.lead }}</p>{% endif %}
   </header>
   <div class="prose">
     {{ content }}

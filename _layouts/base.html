@@ -4,20 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#16181d" media="(prefers-color-scheme: dark)">
-  {% seo %}
+  <meta name="theme-color" content="#0b0d10">
+  {% include seo.html %}
   <script>
-    /* Runs before first paint so a saved theme never flashes. */
+    /* Runs before first paint: apply a saved theme, and opt in to JS-only effects.
+       Scroll-reveal content is shown after 2.5s even if site.js never loads. */
     var d = document.documentElement;
     try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') d.dataset.theme = t; } catch (e) {}
-    /* Scroll-reveal is opt-in: content is only hidden once JS is running, and is
-       always shown after 2.5s in case site.js fails to load. */
     d.classList.add('js');
     setTimeout(function () { if (!d.dataset.reveal) d.classList.remove('js'); }, 2500);
   </script>
+  <link rel="preload" href="{{ '/assets/fonts/inter-tight-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="{{ '/assets/fonts/inter-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="{{ '/assets/fonts/newsreader-latin-wght-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
@@ -26,26 +24,15 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  {%- assign profile = site.data.profile -%}
-  <header class="site-header">
-    <div class="wrap site-header__inner">
-      <a class="site-name" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{{ profile.name }}</a>
-      <nav aria-label="Main">
-        <ul class="nav-list">
-          <li><a href="{{ '/#work' | relative_url }}"{% if page.collection == 'case_studies' %} aria-current="true"{% endif %}>Work</a></li>
-          <li><a href="{{ '/#bio' | relative_url }}">Bio</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="{{ profile.resume | relative_url }}">Resume <span class="visually-hidden">(PDF)</span></a></li>
-        </ul>
-      </nav>
-      {% include theme-toggle.html %}
-    </div>
-  </header>
+  {%- assign has_opener = page.opener | default: layout.opener -%}
+  {% include site-bar.html overlay=has_opener %}
 
   <main id="main" tabindex="-1">
     {{ content }}
   </main>
 
   {% include footer-cta.html %}
+  {% include menu.html %}
+  <div class="cursor" aria-hidden="true"></div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Pre-publish check. Fails (exit 1) if anything that must not go live is still in the site:
-#   [X%] / [X] number placeholders · TODO notes · the placeholder LinkedIn URL · the placeholder resume PDF
+#   [X], [X%], [X …] placeholders · TODO notes · the placeholder LinkedIn URL · the placeholder resume PDF
 # Runs automatically before every GitHub deploy, and before the local preview.
 set -u
 cd "$(dirname "$0")/.."
@@ -9,7 +9,7 @@ cd "$(dirname "$0")/.."
 CONTENT=(_case_studies _data _config.yml index.html 404.html)
 problems=0
 
-hits=$(grep -rnE '\[X%?\]|TODO|YOUR-HANDLE' "${CONTENT[@]}" 2>/dev/null)
+hits=$(grep -rnE '\[X[^]]*\]|TODO|YOUR-HANDLE' "${CONTENT[@]}" 2>/dev/null)
 if [ -n "$hits" ]; then
   echo "✗ Placeholders still in your content (file:line):"
   echo "$hits" | sed 's/^/    /'

@@ -1,10 +1,37 @@
 # ─────────────────────────────────────────────
-# Your details. Everything on the home page and footer reads from here.
+# Your details. The home page, header, menu, and footer read from here.
 # ─────────────────────────────────────────────
 name: Andrew Gendel
-eyebrow: Product designer · Design systems & AI-ready documentation
+initials: AG
+location: San Jose, CA
+role: Product designer · Design systems & AI-ready documentation
 
+# Opener headline. Screen readers hear `hero` once; the line lists only control
+# where the big uppercase text breaks (wide screens, then phones).
 hero: I build design systems that work for people and for AI agents.
+hero_lines_wide:
+  - I build design
+  - systems that work
+  - for people and
+  - for AI agents.
+hero_lines_narrow:
+  - I build
+  - design
+  - systems
+  - that work
+  - for people
+  - and for
+  - AI agents.
+
+# Opener image. Add assets/img/hero.jpg (and optionally hero-800/1600/2400 .avif/.webp/.jpg).
+# Until then, a cool ink gradient shows instead. The image is decorative (no alt needed).
+hero_image: /assets/img/hero.jpg
+
+# Short intro right below the opener
+intro: >-
+  Design systems product designer with five years at Roblox, IBM, and HashiCorp.
+  I work on the standards layer: documentation structure, voice, naming, and
+  governance that keep a product feeling like one system.
 
 bio: >-
   I'm a product designer who builds design systems that work for both people

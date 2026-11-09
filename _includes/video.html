@@ -1,0 +1,18 @@
+{%- comment -%}
+  Muted looping clip. Never autoplays: it plays while hovered or focused, and the visible
+  Play/Pause button controls it directly. The poster is the still-frame fallback.
+  Required: src (.webm), poster, width, height, alt (what the clip shows)
+  Optional: mp4, caption
+  {% include video.html src="/assets/video/slug/clip.webm" mp4="/assets/video/slug/clip.mp4" poster="/assets/img/slug/clip.jpg" width="1280" height="800" alt="…" caption="…" %}
+{%- endcomment -%}
+{%- if include.alt == nil -%}<p class="authoring-warning" role="note"><strong>Missing alt text</strong> for {{ include.src }}.</p>{%- endif -%}
+<figure class="figure video-figure">
+<div class="video" data-video>
+<video muted loop playsinline preload="none" poster="{{ include.poster | relative_url }}" width="{{ include.width }}" height="{{ include.height }}" aria-label="{{ include.alt | escape }}">
+<source src="{{ include.src | relative_url }}" type="video/webm">
+{%- if include.mp4 %}<source src="{{ include.mp4 | relative_url }}" type="video/mp4">{% endif %}
+</video>
+<button class="video__toggle label" type="button" aria-pressed="false" hidden><span class="video__toggle-text">Play</span><span class="visually-hidden"> video</span></button>
+</div>
+{%- if include.caption %}<figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>{% endif -%}
+</figure>

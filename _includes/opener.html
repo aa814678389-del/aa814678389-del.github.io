@@ -1,0 +1,11 @@
+{%- comment -%} Home opener: full-viewport image, huge stacked headline, scroll cue. {%- endcomment -%}
+{%- assign profile = site.data.profile -%}
+<section class="opener opener--home" aria-labelledby="opener-title">
+  {% include opener-media.html image=profile.hero_image %}
+  <h1 id="opener-title" class="opener__title">
+    <span class="visually-hidden">{{ profile.hero }}</span>
+    <span class="opener__lines opener__lines--wide" aria-hidden="true">{% for l in profile.hero_lines_wide %}<span class="line">{{ l }}</span>{% endfor %}</span>
+    <span class="opener__lines opener__lines--narrow" aria-hidden="true">{% for l in profile.hero_lines_narrow %}<span class="line">{{ l }}</span>{% endfor %}</span>
+  </h1>
+  {% include scroll-cue.html target="intro" %}
+</section>

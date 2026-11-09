@@ -16,6 +16,8 @@ metrics:
     label: Helios adoption, up from 65%
   - value: "9+"
     label: product teams using Helios components and tokens
+  - value: "500K+"
+    label: users across the product ecosystem
 
 cover: /assets/img/helios-adoption/cover.svg
 cover_alt: "Bar chart: Helios adoption grew from 65 percent to 92 percent."
@@ -24,11 +26,15 @@ cover_height: 750
 cover_panel: true
 ---
 
+## Context
+
+Helios is HashiCorp's design system, now part of IBM. It supports a cross-platform product ecosystem serving more than 500,000 users, built by 9+ product teams.
+
 ## Problem
 
-Helios, HashiCorp's design system, was in use but not everywhere. Part of the product surface still relied on one-off components and local patterns. That meant inconsistent experiences across products, duplicated effort for teams, and fixes that had to be made many times instead of once.
+Helios was in use but not everywhere. Part of the product surface still relied on one-off components and local patterns. That meant inconsistent experiences across products, duplicated effort for teams, and fixes that had to be made many times instead of once.
 
-## My role
+## Role
 
 From 2021 to 2026 on the design systems team, my scope grew from foundations to platform standards:
 
@@ -37,9 +43,13 @@ From 2021 to 2026 on the design systems team, my scope grew from foundations to 
 - **Standards.** Owned WCAG 2.2 AA accessibility standards across design tokens, component states, and production code.
 - **Alignment.** Facilitated design reviews and working sessions with 15+ stakeholders, and partnered with engineering through QA.
 
-## Decision
+## Decisions
 
-**Make the system the path of least resistance, not a mandate.** Rather than asking teams to adopt Helios because they should, we focused on removing the reasons they didn't: filling component gaps, making standards easier to act on, and keeping design and code in step.
+{% include decision.html title="How to grow adoption" options="Mandate the system|Make it the path of least resistance" chosen="Make it the path of least resistance" why="Remove the reasons teams didn't adopt: fill component gaps, make standards easy to act on, and keep design and code in step." rejected="Mandate the system: compliance without buy-in, and teams work around it" %}
+
+{% include decision.html title="Where standards live" options="Figma only|Tokens in both Figma and code" chosen="Tokens in both Figma and code" why="What designers specify is what engineers ship, which cuts implementation variance." rejected="Figma only: design and code drift apart after handoff" %}
+
+{% include todo.html note="TODO: confirm these were the options you actually weighed." %}
 
 ## System and approach
 
@@ -48,13 +58,19 @@ From 2021 to 2026 on the design systems team, my scope grew from foundations to 
 - **Documentation.** Authored Figma and Storybook documentation so teams could self-serve.
 - **Governance.** Contributed to token architecture, accessibility audits, and governance, so teams could propose changes instead of working around the system.
 
-## Results and adoption
+## Evidence
 
-{% include metrics.html %}
+{% include figure.html src="/assets/img/helios-adoption/cover.svg" alt="Bar chart: Helios adoption grew from 65 percent to 92 percent." width="1200" height="750" caption="Adoption before and after the work." panel="true" %}
+
+## Results and adoption
 
 - Adoption grew from **65% to 92%**.
 - Token-based standards reduced implementation variance and sped up delivery across 9+ product teams.
 - Platform foundations (color, typography, motion, iconography, and components) now support a cross-platform product ecosystem serving 500K+ users.
+
+## What went wrong
+
+{% include todo.html note="TODO: add one or two honest setbacks, such as a migration that stalled, a component that shipped too early, or a team that pushed back, and what you learned." %}
 
 ## What I'd do next
 

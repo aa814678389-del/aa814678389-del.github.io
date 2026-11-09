@@ -1,0 +1,29 @@
+{%- comment -%} "Where I've worked": one card per company, linking to its case studies. Edit _data/workplaces.yml. {%- endcomment -%}
+{%- assign places = site.data.workplaces -%}
+{%- if places and places.size > 0 -%}
+<section id="experience" class="section wrap" aria-labelledby="experience-heading">
+  <div class="section-heading reveal">
+    <h2 id="experience-heading">Where I've worked</h2>
+  </div>
+  <ul class="places" role="list">
+    {%- for place in places %}
+    <li class="place reveal">
+      <p class="label place__years">{{ place.years }}</p>
+      <h3 class="place__company">{{ place.company }}</h3>
+      <p class="place__role">{{ place.role }}</p>
+      <p class="place__summary">{{ place.summary }}</p>
+      {%- if place.studies %}
+      <ul class="place__studies" role="list" aria-label="Case studies from {{ place.company }}">
+        {%- for slug in place.studies -%}
+        {%- assign s = site.case_studies | where: "slug", slug | first -%}
+        {%- if s %}
+        <li><a href="{{ s.url | relative_url }}">{{ s.title }} <span aria-hidden="true">→</span></a></li>
+        {%- endif -%}
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif -%}

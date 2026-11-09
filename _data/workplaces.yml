@@ -1,0 +1,12 @@
+# "Where I've worked" on the home page, most recent first.
+# `studies` lists case study file names (without .md) to link from each card.
+- company: Roblox
+  years: 2026 – present
+  role: Product Designer, Foundation Design Kit
+  summary: Documentation, standards, and AI-readable guidance for the Foundation Design Kit.
+  studies: [design-assist-component-parity, fdk-documentation-standards]
+- company: HashiCorp (now IBM)
+  years: 2021 – 2026
+  role: Product Designer, Design Systems
+  summary: Foundations, components, and accessibility standards for the Helios design system.
+  studies: [helios-adoption]
