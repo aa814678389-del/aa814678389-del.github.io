@@ -1,10 +1,8 @@
 {%- assign profile = site.data.profile -%}
-<section id="intro" class="section wrap reveal" aria-labelledby="intro-heading" tabindex="-1">
-  <div class="section__grid">
-    <h2 id="intro-heading" class="section__label label">Intro</h2>
-    <div class="section__content">
-      <p class="lede">{{ profile.intro }}</p>
-      <p class="more"><a href="#bio">Learn more <span aria-hidden="true">↓</span></a></p>
-    </div>
+<section id="intro" class="statement wrap reveal" aria-labelledby="intro-heading" tabindex="-1">
+  <div class="statement__body">
+    <h2 id="intro-heading" class="statement__label label">Welcome</h2>
+    <p class="statement__text">{{ profile.intro }}</p>
+    <a class="pill" href="#bio"><svg class="pill__arrow" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Learn more</span></a>
   </div>
 </section>

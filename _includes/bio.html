@@ -1,26 +1,24 @@
 {%- assign profile = site.data.profile -%}
-<section id="bio" class="section wrap reveal" aria-labelledby="bio-heading" tabindex="-1">
-  <div class="section__grid">
-    <h2 id="bio-heading" class="section__label label">Bio</h2>
-    <div class="section__content">
-      <p class="bio__text">{{ profile.bio }}</p>
-      {%- if site.data.timeline and site.data.timeline.size > 0 %}
-      <details class="timeline">
-        <summary class="timeline__toggle label">
-          <span>Career timeline</span>
-          <svg class="timeline__chevron" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
-        </summary>
-        <ol class="timeline__list" role="list">
-          {%- for role in site.data.timeline %}
-          <li class="timeline__item">
-            <span class="timeline__year">{{ role.year }}</span>
-            <span class="timeline__title">{{ role.title }}</span>
-            <span class="timeline__company">{{ role.company }}</span>
-          </li>
-          {%- endfor %}
-        </ol>
-      </details>
-      {%- endif %}
-    </div>
+<section id="bio" class="statement wrap reveal" aria-labelledby="bio-heading" tabindex="-1">
+  <div class="statement__body">
+    <h2 id="bio-heading" class="statement__label label">Bio</h2>
+    <p class="statement__text statement__text--long">{{ profile.bio }}</p>
+    {%- if site.data.timeline and site.data.timeline.size > 0 %}
+    <details class="timeline">
+      <summary class="timeline__toggle label">
+        <span>Career timeline</span>
+        <svg class="timeline__chevron" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+      </summary>
+      <ol class="timeline__list" role="list">
+        {%- for role in site.data.timeline %}
+        <li class="timeline__item">
+          <span class="timeline__year">{{ role.year }}</span>
+          <span class="timeline__title">{{ role.title }}</span>
+          <span class="timeline__company">{{ role.company }}</span>
+        </li>
+        {%- endfor %}
+      </ol>
+    </details>
+    {%- endif %}
   </div>
 </section>

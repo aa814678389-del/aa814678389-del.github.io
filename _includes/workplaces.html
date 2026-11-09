@@ -1,24 +1,24 @@
-{%- comment -%} "Where I've worked": one card per company, linking to its case studies. Edit _data/workplaces.yml. {%- endcomment -%}
-{%- assign places = site.data.workplaces -%}
-{%- if places and places.size > 0 -%}
-<section id="experience" class="section wrap" aria-labelledby="experience-heading">
-  <div class="section-heading reveal">
-    <h2 id="experience-heading">Where I've worked</h2>
+{%- comment -%} "Where I've worked": statement + one column per company. Edit _data/workplaces.yml. {%- endcomment -%}
+{%- assign wp = site.data.workplaces -%}
+<section id="experience" class="experience" aria-labelledby="experience-heading">
+  <div class="statement wrap reveal">
+    <div class="statement__body">
+      <h2 id="experience-heading" class="statement__label label">Where I've worked</h2>
+      <p class="statement__text">{{ wp.statement }}</p>
+      <a class="pill pill--quiet" href="{{ site.data.profile.resume | relative_url }}"><svg class="pill__arrow" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span>Resume <span class="visually-hidden">(PDF)</span></span></a>
+    </div>
   </div>
-  <ul class="places" role="list">
-    {%- for place in places %}
-    <li class="place reveal">
-      <p class="label place__years">{{ place.years }}</p>
-      <h3 class="place__company">{{ place.company }}</h3>
-      <p class="place__role">{{ place.role }}</p>
-      <p class="place__summary">{{ place.summary }}</p>
-      {%- if place.studies %}
-      <ul class="place__studies" role="list" aria-label="Case studies from {{ place.company }}">
-        {%- for slug in place.studies -%}
+  <ul class="companies wrap" role="list">
+    {%- for c in wp.companies %}
+    <li class="company reveal">
+      <h3 class="company__name">{{ c.name }}</h3>
+      <p class="label company__years">{{ c.years }}</p>
+      <p class="company__summary">{{ c.summary }}</p>
+      {%- if c.studies %}
+      <ul class="company__studies" role="list" aria-label="Case studies from {{ c.name }}">
+        {%- for slug in c.studies -%}
         {%- assign s = site.case_studies | where: "slug", slug | first -%}
-        {%- if s %}
-        <li><a href="{{ s.url | relative_url }}">{{ s.title }} <span aria-hidden="true">→</span></a></li>
-        {%- endif -%}
+        {%- if s %}<li><a href="{{ s.url | relative_url }}">{{ s.short_title | default: s.title }} <span aria-hidden="true">→</span></a></li>{% endif -%}
         {%- endfor %}
       </ul>
       {%- endif %}
@@ -26,4 +26,3 @@
     {%- endfor %}
   </ul>
 </section>
-{%- endif -%}

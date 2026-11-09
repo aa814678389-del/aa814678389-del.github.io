@@ -1,5 +1,8 @@
 ---
 # ─── Opener, card, and outcome strip (all of this shows on the page) ───
+short_title: Design Assist parity        # big title on the home page slide
+company: Roblox
+year: "2026"
 title: Making Design Assist output match Figma, web, and Luau
 summary: >-
   I restructured the Foundation Design Kit's documentation into machine-readable

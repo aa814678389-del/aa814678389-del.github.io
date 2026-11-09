@@ -130,6 +130,26 @@
     Object.keys(byId).forEach(function (id) { var h = document.getElementById(id); if (h) spy.observe(h); });
   }
 
+  /* ── Work slides: show the dot navigation while slides are in view; mark the current one ── */
+  var dots = document.querySelector('.project-dots');
+  var projects = document.querySelectorAll('.project');
+  if (dots && projects.length && 'IntersectionObserver' in window) {
+    var dotLinks = dots.querySelectorAll('a');
+    var visible = new Set();
+    var watch = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) visible.add(entry.target); else visible.delete(entry.target);
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          dotLinks.forEach(function (l) {
+            if (l.hash === '#' + entry.target.id) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current');
+          });
+        }
+      });
+      dots.classList.toggle('is-active', visible.size > 0);
+    }, { threshold: [0, 0.5] });
+    projects.forEach(function (p) { watch.observe(p); });
+  }
+
   /* ── Cursor ring: pointer devices only, never with reduced motion. Native cursor stays. ── */
   var ring = document.querySelector('.cursor');
   if (ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce()) {
@@ -147,7 +167,7 @@
     }, { passive: true });
     document.addEventListener('pointerleave', function () { ring.classList.remove('is-on'); });
     document.addEventListener('pointerover', function (e) {
-      ring.classList.toggle('is-big', !!(e.target.closest && e.target.closest('a, button, summary, .card')));
+      ring.classList.toggle('is-big', !!(e.target.closest && e.target.closest('a, button, summary, .card, .project__media')));
     });
   }
 })();

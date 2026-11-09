@@ -1,4 +1,7 @@
 ---
+short_title: Docs for people and agents        # big title on the home page slide
+company: Roblox
+year: "2026"
 title: One documentation standard for humans and agents
 summary: >-
   I standardized the Foundation Design Kit's component documentation into one

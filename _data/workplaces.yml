@@ -1,12 +1,24 @@
-# "Where I've worked" on the home page, most recent first.
-# `studies` lists case study file names (without .md) to link from each card.
-- company: Roblox
-  years: 2026 – present
-  role: Product Designer, Foundation Design Kit
-  summary: Documentation, standards, and AI-readable guidance for the Foundation Design Kit.
-  studies: [design-assist-component-parity, fdk-documentation-standards]
-- company: HashiCorp (now IBM)
-  years: 2021 – 2026
-  role: Product Designer, Design Systems
-  summary: Foundations, components, and accessibility standards for the Helios design system.
-  studies: [helios-adoption]
+# "Where I've worked" on the home page: a statement, then one column per company.
+# `studies` lists case study file names (without .md) to link under each company.
+statement: >-
+  For five years I've built the standards layer of design systems at Roblox,
+  IBM, and HashiCorp, so products feel like one system to the people and the
+  AI tools that use them.
+companies:
+  - name: Roblox
+    years: 2026 – present
+    summary: >-
+      I own the Foundation Design Kit's documentation and standards, including
+      the AI-readable guidance that feeds Design Assist.
+    studies: [design-assist-component-parity, fdk-documentation-standards]
+  - name: IBM
+    years: 2025 – 2026
+    summary: >-
+      I evolved platform foundations for a cross-platform product ecosystem
+      serving 500K+ users, and owned WCAG 2.2 AA standards across tokens and code.
+  - name: HashiCorp
+    years: 2021 – 2025
+    summary: >-
+      I helped build the Helios design system from its foundations, and designed
+      components used across 9+ product teams.
+    studies: [helios-adoption]

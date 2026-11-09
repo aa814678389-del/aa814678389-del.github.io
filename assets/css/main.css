@@ -614,6 +614,106 @@ figcaption { margin-top: var(--space-3); font-size: var(--text-sm); color: var(-
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
+/* ───────── 11. Home: statements, companies, work slides ───────── */
+/* Statement: short rule, small label, large paragraph starting right of center, pill button */
+.statement { padding-block: var(--space-10) var(--space-8); scroll-margin-top: var(--space-5); }
+.statement:focus { outline: none; }
+.statement__body { display: grid; justify-items: start; gap: var(--space-5); max-width: 52rem; }
+@media (min-width: 60rem) { .statement__body { margin-left: 38%; } }
+.statement__label { display: grid; gap: var(--space-4); }
+.statement__label::before { content: ""; width: 10rem; height: 2px; background: var(--color-rule-strong); }
+.statement__text {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.05rem + 2.4vw, 3.25rem);
+  font-weight: 450;
+  line-height: 1.16;
+  letter-spacing: -0.022em;
+  margin-top: var(--space-4);
+}
+.statement__text--long { font-size: clamp(1.5rem, 1.05rem + 1.5vw, 2.4rem); line-height: 1.22; }
+.statement .timeline { width: 100%; margin-top: var(--space-4); }
+
+.pill {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  min-height: 3.25rem;
+  margin-top: var(--space-4);
+  padding: 0 var(--space-6) 0 var(--space-5);
+  border: 2px solid var(--color-text); border-radius: 999px;
+  color: var(--color-text); text-decoration: none;
+  font-size: var(--text-sm); font-weight: 650; letter-spacing: 0.02em; text-transform: uppercase;
+}
+.pill:hover { background: var(--color-text); color: var(--color-bg); text-decoration: none; }
+.pill--quiet { border-color: transparent; padding-left: 0; }
+.pill--quiet:hover { background: none; color: var(--color-accent); }
+
+.companies {
+  list-style: none; margin: 0 auto; padding-top: 0; padding-bottom: var(--space-8);
+  display: grid; gap: 0 var(--space-7);
+}
+@media (min-width: 52rem) { .companies { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.company { display: grid; align-content: start; gap: var(--space-3); padding-block: var(--space-7); border-top: 1px solid var(--color-rule); }
+.company__name { font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.company__years { color: var(--color-text-muted); }
+.company__summary { color: var(--color-text-muted); max-width: 34ch; }
+.company__studies { list-style: none; margin: var(--space-2) 0 0; padding: 0; display: grid; gap: var(--space-1); }
+.company__studies a { display: inline-flex; gap: var(--space-2); padding-block: var(--space-1); font-weight: 600; text-decoration: none; }
+.company__studies a:hover { text-decoration: underline; }
+
+/* Divider: rule with a plus, then a huge stacked title */
+.divider { min-height: 85vh; min-height: 85svh; display: grid; grid-template-rows: auto 1fr; padding-top: var(--space-8); }
+.divider__rule { display: flex; align-items: center; gap: var(--space-5); color: var(--color-text); font-size: 1.75rem; font-weight: 300; line-height: 1; }
+.divider__rule::before, .divider__rule::after { content: ""; flex: 1; height: 1px; background: var(--color-rule); }
+.divider__title {
+  align-self: center; text-align: center;
+  font-size: clamp(4rem, 2rem + 11vw, 15rem);
+  font-weight: 700; line-height: 0.86; letter-spacing: var(--tracking-display); text-transform: uppercase;
+}
+.divider__title .line { display: block; }
+
+/* One full-screen slide per case study */
+.project {
+  min-height: 100vh; min-height: 100svh;
+  display: grid; align-items: center; gap: var(--space-6);
+  padding-block: var(--space-8);
+  scroll-margin-top: 0;
+}
+@media (min-width: 60rem) { .project { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-9); } }
+.project__media {
+  display: block; position: relative; overflow: hidden;
+  aspect-ratio: 11 / 12; max-width: 100%;
+  background: var(--color-panel);
+}
+.project__media img, .project__media video { width: 100%; height: 100%; object-fit: contain; padding: 8%; }
+.project__body { display: grid; justify-items: start; gap: var(--space-4); min-width: 0; }
+.project__title {
+  font-size: clamp(3rem, 1.5rem + 4.6vw, 7rem);
+  font-weight: 700; line-height: 0.9; letter-spacing: var(--tracking-display); text-transform: uppercase;
+  margin-top: var(--space-4);
+  max-width: 9ch;
+  text-wrap: balance;
+}
+.project__disciplines { color: var(--color-text-muted); font-size: var(--text-h3); }
+
+/* Dot navigation: fixed on the right edge while the slides are in view (JS only) */
+.project-dots {
+  position: fixed; right: max(var(--space-4), env(safe-area-inset-right, 0px)); top: 50%; z-index: 4;
+  transform: translateY(-50%);
+  visibility: hidden; opacity: 0;
+}
+.project-dots.is-active { visibility: visible; opacity: 1; }
+.project-dots ol { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.project-dots a { display: grid; place-items: center; width: 1.75rem; height: 1.75rem; border-radius: 50%; }
+.project-dots a::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--color-text-muted); }
+.project-dots a[aria-current="true"]::before { width: 11px; height: 11px; background: transparent; border: 2px solid var(--color-text); }
+@media (max-width: 40rem) { .project-dots { display: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .project-dots { transition: opacity 250ms ease, visibility 250ms; }
+  .pill, .pill__arrow { transition: background-color 200ms ease, color 200ms ease, transform 200ms ease; }
+  .pill:hover .pill__arrow { transform: translateX(3px); }
+  .project__media img { transition: transform 500ms cubic-bezier(.2,.7,.2,1); }
+  .project:has(.pill:hover, .pill:focus-visible, .project__media:hover) .project__media img { transform: scale(1.03); }
+}
+
 /* ───────── 10. Print ───────── */
 @media print {
   .site-bar, .menu, .cursor, .cue, .toc, .skip-link, .pager, .opener__media, .opener__grain, .opener__scrim { display: none !important; }

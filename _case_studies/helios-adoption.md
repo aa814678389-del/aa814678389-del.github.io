@@ -1,4 +1,7 @@
 ---
+short_title: Helios adoption        # big title on the home page slide
+company: HashiCorp
+year: "2021–2026"
 title: Growing Helios adoption from 65% to 92%
 summary: >-
   At HashiCorp, I helped build the Helios design system from its foundations
