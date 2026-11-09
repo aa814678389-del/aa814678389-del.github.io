@@ -1,19 +1,10 @@
 {%- comment -%}
   Logo, drawn in currentColor so it's white over the opener and dark on light pages.
-  Strokes stay a fixed pixel width at any size (vector-effect), so it stays crisp when small.
   Original artwork: /assets/img/brand/logo-original.png
 {%- endcomment -%}
-<svg class="logo{% if include.class %} {{ include.class }}{% endif %}" viewBox="0 0 600 600" width="{{ include.size | default: 40 }}" height="{{ include.size | default: 40 }}" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-  <circle cx="300" cy="300" r="292" vector-effect="non-scaling-stroke" class="logo__ring"/>
-  <g vector-effect="non-scaling-stroke" class="logo__face">
-    <path vector-effect="non-scaling-stroke" d="M118 196 Q 160 160 212 168"/>
-    <path vector-effect="non-scaling-stroke" d="M398 167 Q 452 160 495 199"/>
-    <path vector-effect="non-scaling-stroke" d="M116 270 Q 180 222 246 270"/>
-    <path vector-effect="non-scaling-stroke" d="M366 270 Q 432 222 497 270"/>
-    <circle vector-effect="non-scaling-stroke" cx="308" cy="298" r="16"/>
-    <path vector-effect="non-scaling-stroke" d="M108 372 Q 300 455 502 368"/>
-    <path vector-effect="non-scaling-stroke" d="M108 372 C 165 470 235 492 305 491 C 380 490 450 455 502 368"/>
-    <path vector-effect="non-scaling-stroke" d="M90 389 Q 98 360 130 360"/>
-    <path vector-effect="non-scaling-stroke" d="M483 351 Q 517 350 525 378"/>
-  </g>
+<svg class="logo{% if include.class %} {{ include.class }}{% endif %}" viewBox="0 0 600 600" width="{{ include.size | default: 40 }}" height="{{ include.size | default: 40 }}" fill="none" stroke="currentColor" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="300" cy="300" r="276"/>
+  <path d="M152 249 A48 48 0 0 1 248 249"/>
+  <path d="M352 249 A48 48 0 0 1 448 249"/>
+  <path d="M160 336 V346 A140 133 0 0 0 440 346 V336"/>
 </svg>

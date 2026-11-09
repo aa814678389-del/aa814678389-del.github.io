@@ -87,8 +87,6 @@ a:hover { color: var(--color-accent-hover); text-decoration-thickness: 2px; }
 .site-bar__mark { display: inline-grid; place-items: center; border-radius: 50%; }
 .site-bar__mark:hover { text-decoration: none !important; }
 .logo { display: block; width: 2.5rem; height: 2.5rem; }
-.logo__ring { stroke-width: 1.6px; }
-.logo__face { stroke-width: 1.4px; }
 .site-bar__name, .site-bar__loc { padding-block: var(--space-2); }
 @media (max-width: 40rem) { .site-bar__loc { display: none; } }
 @media (prefers-reduced-motion: no-preference) {
