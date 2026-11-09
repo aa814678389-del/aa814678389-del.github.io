@@ -7,17 +7,20 @@ statement: >-
 companies:
   - name: Roblox
     years: 2026 – present
+    role: Product Designer, Foundation Design Kit
     summary: >-
       I own the Foundation Design Kit's documentation and standards, including
       the AI-readable guidance that feeds Design Assist.
     studies: [design-assist-component-parity, fdk-documentation-standards]
   - name: IBM
     years: 2025 – 2026
+    role: Product Designer II, Design Systems
     summary: >-
       I evolved platform foundations for a cross-platform product ecosystem
       serving 500K+ users, and owned WCAG 2.2 AA standards across tokens and code.
   - name: HashiCorp
     years: 2021 – 2025
+    role: Product Designer I and Associate Product Designer, Design Systems
     summary: >-
       I helped build the Helios design system from its foundations, and designed
       components used across 9+ product teams.

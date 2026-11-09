@@ -13,8 +13,7 @@ You never run a build: push to `main` and GitHub publishes the site in about a m
 |---|---|
 | Opener headline and line breaks, intro, bio, location, email, LinkedIn, resume link, "Let's talk" text | `_data/profile.yml` |
 | Opener photo | add `assets/img/hero.jpg` (see "Opener image" below) |
-| Career timeline | `_data/timeline.yml` |
-| "Where I've worked" cards | `_data/workplaces.yml` |
+| "Where I've worked" statement and company columns (years, role, summary) | `_data/workplaces.yml` |
 | Featured writing and talks (hidden while empty) | `_data/writing.yml` |
 | A case study | `_case_studies/<slug>.md` |
 | Resume | replace `assets/resume/andrew-gendel-resume.pdf` (keep the file name) |

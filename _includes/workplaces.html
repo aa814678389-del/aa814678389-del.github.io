@@ -13,6 +13,7 @@
     <li class="company reveal">
       <h3 class="company__name">{{ c.name }}</h3>
       <p class="label company__years">{{ c.years }}</p>
+      {%- if c.role %}<p class="company__role">{{ c.role }}</p>{% endif %}
       <p class="company__summary">{{ c.summary }}</p>
       {%- if c.studies %}
       <ul class="company__studies" role="list" aria-label="Case studies from {{ c.name }}">
