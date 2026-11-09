@@ -1,22 +1,21 @@
 ---
 title: One documentation standard for humans and agents
 summary: >-
-  I created a single standard for component documentation, covering structure,
-  voice, and naming, so every page reads as if one person wrote it, and AI agents
-  can follow it as reliably as people can.
-tags: [Content foundations, Documentation, Design systems]
+  I standardized the Foundation Design Kit's component documentation into one
+  structure and voice, so every page reads as if one person wrote it, and AI
+  agents can follow it as reliably as people can.
+tags: [Content foundations, Documentation, Governance]
 role: Product designer, Foundation Design Kit
-team: "TODO: e.g. me + component owners across design and engineering"
-timeline: "2026"
+team: Partnered with content design, design, and engineering
+timeline: 2026
 featured: true
 order: 2
 
 metrics:
-  - value: "[X%]"
-    label: of component pages moved to the new standard
-    note: "TODO: real figure, cleared with Roblox"
+  - value: "80%"
+    label: FDK adoption across product teams
   - value: "1"
-    label: standard for structure, voice, and naming
+    label: structure and voice for every component page
 
 cover: /assets/img/fdk-documentation-standards/cover.svg
 cover_alt: >-
@@ -27,19 +26,20 @@ cover_height: 750
 cover_panel: true
 ---
 
-{% include todo.html note="TODO (Roblox review): confirm everything here is cleared to share. Examples are generic on purpose; do not add real page screenshots." %}
-
 ## Problem
 
-Component documentation had grown page by page, written by many people at different times. Each page was useful on its own, but together they were inconsistent: sections in different orders, the same idea named three ways, and guidance buried in paragraphs.
+Component documentation had grown page by page, written by different people at different times. Each page was useful on its own, but together they were inconsistent: sections in different orders, the same idea named different ways, and guidance buried in paragraphs.
 
-That cost people time, because they had to re-learn every page. It cost AI agents even more: a model can't tell that "Usage," "When to use," and "Guidelines" mean the same thing unless something says so.
+That cost people time, because they had to re-learn every page. It cost AI agents even more: a model can't tell that two differently worded sections mean the same thing unless something says so.
 
 ## My role
 
-I wrote the standard, piloted it on a set of components, and set up the review process that keeps new pages consistent. I also wrote the guidance that helps other contributors write to the standard without me in the loop.
+I led the standard and the governance around it:
 
-{% include todo.html note="TODO: add how many contributors or teams wrote to the standard, if you can share it." %}
+- standardized component documentation on the FDK website into one structure and voice
+- worked with content design partners to align terminology, tone, and writing patterns across pages
+- reorganized the FDK Figma library taxonomy, defining naming and information architecture conventions
+- set up the governance standards and contribution paths that keep the system consistent as it grows
 
 ## Decision
 
@@ -50,9 +50,9 @@ I deliberately kept the standard small: a fixed set of sections, a short voice g
 ## System and approach
 
 - **Structure.** The same sections in the same order on every page, each with a clear job.
-- **Voice.** Short, direct sentences, with "Do" and "Don't" written as rules rather than suggestions.
-- **Naming.** One name per concept, used the same way in docs, Figma, and code.
-- **Review.** A lightweight checklist for new and updated pages, so the standard holds as the system grows.
+- **Voice and terminology.** Aligned with content design, with one name per concept used the same way in docs, Figma, and code.
+- **Naming and taxonomy.** A reorganized Figma library with naming and information architecture conventions that match the docs.
+- **Governance.** Clear contribution paths, so teams can propose changes instead of working around the system.
 
 {% include before-after.html before="/assets/img/fdk-documentation-standards/before.svg" before_alt="Before: a documentation page that is one long run of unlabeled paragraphs." after="/assets/img/fdk-documentation-standards/after.svg" after_alt="After: the same page split into labeled sections: When to use, Do and Don't, and Tokens." width="800" height="500" caption="Illustrative layout, not a real page: the same content, restructured so both people and agents can find what they need." panel="true" %}
 
@@ -60,10 +60,8 @@ I deliberately kept the standard small: a fixed set of sections, a short voice g
 
 {% include metrics.html %}
 
-- **[X%]** of component pages now follow the standard.
-- The same pages feed the structured spec used by the AI design pipeline (see the [Design Assist case study]({{ '/work/design-assist-component-parity/' | relative_url }})).
-
-{% include todo.html note="TODO: add one qualitative signal, such as feedback from contributors, faster reviews, or fewer questions in support channels." %}
+- FDK adoption reached **80% across all product teams**, driven by governance standards, clear contribution paths, and partnership with design, engineering, and content design.
+- The same standardized pages feed the AI-readable guidance behind Design Assist (see the [Design Assist case study]({{ '/work/design-assist-component-parity/' | relative_url }})).
 
 ## What I'd do next
 

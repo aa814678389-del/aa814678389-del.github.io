@@ -2,22 +2,20 @@
 # ─── Card + "At a glance" (all of this shows on the page) ───
 title: Making Design Assist output match Figma, web, and Luau
 summary: >-
-  I turned our design system's documentation into a structured source an AI
-  design tool can follow, so what it generates matches the components teams
-  actually ship.
+  I restructured the Foundation Design Kit's documentation into machine-readable
+  guidance for Design Assist, so designers generate on-system layouts out of the box.
 tags: [Design systems, AI-ready documentation, Standards]
 role: Product designer, Foundation Design Kit
-team: "TODO: e.g. me + design systems engineers + the AI tooling team"
-timeline: "2026"
+team: Partnered with design, engineering, and content design
+timeline: Jan 2026 – present
 featured: true
 order: 1
 
 metrics:
-  - value: "[X%]"
-    label: of generated components matched the shipped system
-    note: "TODO: say how this was measured, and confirm Roblox is OK sharing it"
+  - value: "2"
+    label: surfaces kept in parity, one for people and one for AI
   - value: "3"
-    label: platforms kept in step from one source (Figma, web, Luau)
+    label: platforms the guidance covers (Figma, web, Luau)
 
 # ─── Images ───
 cover: /assets/img/design-assist-component-parity/cover.svg
@@ -30,53 +28,46 @@ cover_panel: true
 # thumb_video: /assets/video/design-assist-component-parity/loop.webm   # optional, plays on hover
 ---
 
-{% include todo.html note="TODO (Roblox review): confirm that the names “Design Assist” and “Foundation Design Kit” are public, and that this page includes nothing unreleased. Diagrams here are redrawn and generic on purpose." %}
-
 ## Problem
 
-An AI design tool is only as consistent as what it learns from. Our design system existed in three places (Figma, web code, and Luau), and its guidance was written for people: helpful prose, but loosely structured and different from page to page.
+An AI design tool is only as consistent as what it learns from. The Foundation Design Kit (FDK) is used in Figma, on the web, and in Luau, and its guidance was written for people: helpful prose, but not structured for a machine to follow.
 
-When a generator reads that kind of documentation, small gaps turn into visible drift: a component with the wrong size, a token that exists on one platform but not another, a pattern used where the guidelines say not to. Teams then spend time correcting generated designs instead of building on them.
+When a generator reads documentation like that, small gaps turn into visible drift: a component used where the guidelines say not to, or a layout that looks close to the system but isn't on it. Designers then spend time correcting generated work instead of building on it.
 
 ## My role
 
-I own the Foundation Design Kit's documentation and standards. On this project I:
+I own the structure of the FDK's reference material across two surfaces:
 
-- defined what "matching the system" means, component by component
-- designed the structure that turns our documentation into input the tool can rely on
-- set the standards and review process that keep that input in step with Figma, web, and Luau
+- the human-facing FDK website and Figma library
+- an AI-readable version that feeds Design Assist, Roblox's AI design tool
 
-{% include todo.html note="TODO: name your partners (by role, not by name) and anything you led versus contributed to." %}
+I partnered with design, engineering, and content design to decide what that guidance says and how it's structured.
 
 ## Decision
 
-**Fix the source, not the output.** Correcting generated designs one at a time would never scale, so we made the documentation itself machine-readable, with one structured definition per component that every platform and the AI tool read from.
+**Fix the source, not the output.** Correcting generated designs one at a time would never scale. Instead, we made the documentation itself machine-readable, and kept the human and AI versions in parity so they never tell two different stories.
 
-The trade-off was up-front work: every component page had to be rewritten to a stricter standard before the tool improved at all. I chose that over prompt tweaks because the documentation work also helps the people reading our docs.
+The trade-off was up-front work: component documentation, usage rules, and patterns all had to be restructured before the tool improved. I chose that over prompt tweaks because the same restructuring also makes the docs clearer for people.
 
 ## System and approach
 
-The pipeline has three parts:
+1. **One structure for every component.** Documentation, usage rules, and patterns follow the same predictable shape, so the AI tool can parse them without reading between the lines.
+2. **Two surfaces, kept in parity.** The human-facing site and Figma library and the AI-readable version come from the same standards, so a change to one is a change to both.
+3. **Guidelines written for both readers.** Component architecture and WCAG 2.2 AA accessibility guidance are written so human designers and AI agents can act on them.
+4. **A faster path from gap to fix.** I built an AI-powered workflow that turns design system feedback into draft pull requests, so reported gaps reach the published docs sooner.
 
-1. **Standards.** One documentation structure for every component: when to use it, when not to, its variants, and the tokens it uses.
-2. **Structured spec.** The same content exported in a predictable format the AI tool can parse, with no reading between the lines.
-3. **Parity checks.** A review step that compares each component's definition across Figma, web, and Luau, so a mismatch is caught in the source before it shows up in generated output.
-
-{% include figure.html src="/assets/img/design-assist-component-parity/parity.svg" alt="Before: the same component appears at three different sizes and shapes in Figma, web, and Luau. After: it is identical on all three." width="1200" height="700" caption="Illustrative only: the goal was the same component, the same way, on every platform." panel="true" wide="true" %}
-
-{% include todo.html note="TODO: add a sentence on how the parity check works in practice (manual review, automated diff, or both), described at a general level." %}
+{% include figure.html src="/assets/img/design-assist-component-parity/parity.svg" alt="Before: the same component appears at three different sizes and shapes in Figma, web, and Luau. After: it is identical on all three." width="1200" height="700" caption="Illustrative only: the goal is the same component, the same way, on every platform." panel="true" wide="true" %}
 
 ## Results and adoption
 
 {% include metrics.html %}
 
-- Generated components matched the shipped system **[X%]** of the time after the change.
-- One source of truth now serves Figma, web, Luau, and the AI tool, so fixing a definition once fixes it everywhere.
-
-{% include todo.html note="TODO: replace [X%] with your real number and add one adoption signal (teams using the output, fewer corrections, etc.). The check script will block publishing until [X%] is gone." %}
+- Designers using Design Assist generate on-system layouts out of the box, without correcting off-system output by hand.
+- One set of standards serves both the people reading the docs and the AI generating designs.
+- Feedback about gaps now becomes a draft documentation update instead of a ticket waiting for someone to write it.
 
 ## What I'd do next
 
-- Measure parity continuously instead of at review time, and surface drift to component owners automatically.
-- Extend the same structure to patterns and page templates, not just individual components.
-- Publish the documentation standard internally so other teams can make their own guidance readable by AI tools.
+- Measure how often generated output stays on-system, and surface drift to component owners automatically.
+- Extend the same structure from components to page templates and larger patterns.
+- Share the documentation standard more widely, so other teams can make their own guidance readable by AI tools.
