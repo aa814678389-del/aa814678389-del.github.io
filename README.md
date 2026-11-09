@@ -1,4 +1,6 @@
-# agendeldesign.com
+# Andrew Gendel: portfolio
+
+Live at **https://agendel404.github.io** (repository `agendel404/agendeldesign.com`).
 
 Portfolio site for Andrew Gendel. Plain HTML, CSS and ~2 KB of JavaScript, published with GitHub Pages.
 You never run a build: push to `main` and GitHub publishes the site in about a minute.
@@ -118,7 +120,18 @@ but still serves the site so you can review drafts.
 
 ---
 
-## Publish on GitHub Pages with agendeldesign.com
+## Publish on GitHub Pages
+
+The site publishes free at `https://agendel404.github.io`. For that address, the repository must be named
+`agendel404.github.io`, and **Settings → Pages → Source** must be **GitHub Actions**.
+
+### Adding the custom domain later (optional)
+
+When you buy `agendeldesign.com`:
+1. Recreate a file named `CNAME` in the repo root containing `agendeldesign.com`.
+2. Change `url:` in `_config.yml` to `"https://agendeldesign.com"`.
+3. Follow steps 3–5 below (verify, DNS, connect). Old `github.io` links redirect automatically.
+
 
 ### 1. Put the site on GitHub
 
@@ -170,7 +183,7 @@ DNS can take from a few minutes up to 24 hours to update.
 ### 5. Connect the domain to the repo
 
 1. Repo **Settings → Pages → Custom domain**: enter `agendeldesign.com` and click **Save**.
-   With the GitHub Actions source, this setting is what counts; the `CNAME` file in this folder is a backup.
+   With the GitHub Actions source, this setting is what counts; the `CNAME` file is a backup.
 2. Wait for the DNS check to show a green tick, then turn on **Enforce HTTPS**. The certificate can take up to an hour to appear.
 3. `www.agendeldesign.com` will redirect to `agendeldesign.com` automatically.
 
