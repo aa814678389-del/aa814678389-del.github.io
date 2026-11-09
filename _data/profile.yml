@@ -2,7 +2,7 @@
 # Your details. The home page, header, menu, and footer read from here.
 # ─────────────────────────────────────────────
 name: Andrew Gendel
-initials: AG
+initials: AG   # no longer shown; the logo replaced it
 location: San Jose, CA
 role: Product designer · Design systems & AI-ready documentation
 

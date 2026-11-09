@@ -2,7 +2,7 @@
 {%- assign profile = site.data.profile -%}
 <header class="site-bar{% if include.overlay %} site-bar--overlay{% endif %}">
   <div class="site-bar__inner label">
-    <a class="site-bar__mark" href="{{ '/' | relative_url }}" aria-label="{{ profile.name }}, home">{{ profile.initials }}</a>
+    <a class="site-bar__mark" href="{{ '/' | relative_url }}" aria-label="{{ profile.name }}, home">{% include logo.html size=40 %}</a>
     <a class="site-bar__name" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>{{ profile.name }}</a>
     <span class="site-bar__loc">{{ profile.location }}</span>
     <button class="menu-btn label" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="site-menu">

@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1f4fa3"/><text x="32" y="45" text-anchor="middle" font-family="Georgia, serif" font-size="38" font-weight="600" fill="#fff">A</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none" stroke="#111418" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="300" cy="300" r="282" fill="#ffffff" stroke-width="36"/>
+  <g stroke-width="30">
+    <path d="M116 270 Q 180 210 246 270"/>
+    <path d="M366 270 Q 432 210 497 270"/>
+    <path d="M108 372 C 165 480 235 500 305 499 C 380 498 450 465 502 368"/>
+    <path d="M108 372 Q 300 455 502 368"/>
+  </g>
+</svg>
