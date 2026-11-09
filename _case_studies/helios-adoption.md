@@ -49,8 +49,6 @@ From 2021 to 2026 on the design systems team, my scope grew from foundations to 
 
 {% include decision.html title="Where standards live" options="Figma only|Tokens in both Figma and code" chosen="Tokens in both Figma and code" why="What designers specify is what engineers ship, which cuts implementation variance." rejected="Figma only: design and code drift apart after handoff" %}
 
-{% include todo.html note="TODO: confirm these were the options you actually weighed." %}
-
 ## System and approach
 
 - **Token-based standards.** Built in both Figma and code, so what designers specify is what engineers ship.
@@ -67,10 +65,6 @@ From 2021 to 2026 on the design systems team, my scope grew from foundations to 
 - Adoption grew from **65% to 92%**.
 - Token-based standards reduced implementation variance and sped up delivery across 9+ product teams.
 - Platform foundations (color, typography, motion, iconography, and components) now support a cross-platform product ecosystem serving 500K+ users.
-
-## What went wrong
-
-{% include todo.html note="TODO: add one or two honest setbacks, such as a migration that stalled, a component that shipped too early, or a team that pushed back, and what you learned." %}
 
 ## What I'd do next
 

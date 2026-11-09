@@ -50,8 +50,6 @@ I own the structure of the FDK's reference material across both surfaces. I part
 
 {% include decision.html title="One set of docs or two" options="Separate docs for people and for AI|One standard, two surfaces kept in parity" chosen="One standard, two surfaces kept in parity" why="The human and AI versions can never tell two different stories." rejected="Separate docs for people and for AI: they drift apart, and every fix has to be made twice" %}
 
-{% include todo.html note="TODO (Roblox review): confirm these were the options you actually weighed, and that describing them publicly is fine with Roblox." %}
-
 ## System and approach
 
 1. **One structure for every component.** Documentation, usage rules, and patterns follow the same predictable shape, so the AI tool can parse them without reading between the lines.
@@ -70,10 +68,6 @@ I own the structure of the FDK's reference material across both surfaces. I part
 - Designers using Design Assist generate on-system layouts out of the box, without correcting off-system output by hand.
 - One set of standards serves both the people reading the docs and the AI generating designs.
 - Feedback about gaps now becomes a draft documentation update instead of a ticket waiting for someone to write it.
-
-## What went wrong
-
-{% include todo.html note="TODO: add one or two honest setbacks, such as something that took longer than planned, a structure you had to rework, or a gap the first version missed, and what you changed. Keep it general enough to clear with Roblox." %}
 
 ## What I'd do next
 

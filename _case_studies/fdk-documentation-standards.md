@@ -51,8 +51,6 @@ I led the standard and the governance around it:
 
 {% include decision.html title="How big the standard should be" options="A complete style guide|A small, memorable standard" chosen="A small, memorable standard" why="A fixed set of sections, a short voice guide, and naming rules. A standard people can remember gets followed." rejected="A complete style guide: long standards get skimmed, then ignored" %}
 
-{% include todo.html note="TODO (Roblox review): confirm these were the options you actually weighed, and that describing them publicly is fine with Roblox." %}
-
 ## System and approach
 
 - **Structure.** The same sections in the same order on every page, each with a clear job.
@@ -68,10 +66,6 @@ I led the standard and the governance around it:
 
 - FDK adoption reached **80% across all product teams**, driven by governance standards, clear contribution paths, and partnership with design, engineering, and content design.
 - The same standardized pages feed the AI-readable guidance behind Design Assist (see the [Design Assist case study]({{ '/work/design-assist-component-parity/' | relative_url }})).
-
-## What went wrong
-
-{% include todo.html note="TODO: add one or two honest setbacks, such as pages that resisted the new structure, terms teams disagreed on, or contributors who skipped the standard, and how you handled them. Keep it general enough to clear with Roblox." %}
 
 ## What I'd do next
 
