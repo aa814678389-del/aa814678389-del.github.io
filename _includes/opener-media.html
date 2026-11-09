@@ -1,0 +1,31 @@
+{%- comment -%}
+  Background layers for an opener: image (or gradient placeholder), scrim, film grain.
+  `image`: path to a .jpg/.png/.svg. If <name>-1600.jpg exists next to it, a responsive
+  <picture> is served (800/1600/2400 widths; AVIF and WebP when present).
+  The image is decorative (alt=""): the headline carries the meaning.
+{%- endcomment -%}
+{%- assign img = include.image -%}
+{%- assign img_file = site.static_files | where: "path", img | first -%}
+{%- assign ext = img | split: '.' | last -%}
+{%- assign base = img | remove: ext | remove_last: '.' -%}
+{%- assign p1600 = base | append: '-1600.jpg' -%}
+{%- assign has_set = site.static_files | where: "path", p1600 | first -%}
+{%- assign pavif = base | append: '-1600.avif' -%}
+{%- assign has_avif = site.static_files | where: "path", pavif | first -%}
+{%- assign pwebp = base | append: '-1600.webp' -%}
+{%- assign has_webp = site.static_files | where: "path", pwebp | first -%}
+<div class="opener__media{% if include.diagram %} opener__media--diagram{% endif %}" aria-hidden="true">
+  {%- if has_set %}
+  <picture>
+    {%- if has_avif %}<source type="image/avif" sizes="100vw" srcset="{{ base | append: '-800.avif' | relative_url }} 800w, {{ base | append: '-1600.avif' | relative_url }} 1600w, {{ base | append: '-2400.avif' | relative_url }} 2400w">{% endif %}
+    {%- if has_webp %}<source type="image/webp" sizes="100vw" srcset="{{ base | append: '-800.webp' | relative_url }} 800w, {{ base | append: '-1600.webp' | relative_url }} 1600w, {{ base | append: '-2400.webp' | relative_url }} 2400w">{% endif %}
+    <img src="{{ p1600 | relative_url }}" sizes="100vw" srcset="{{ base | append: '-800.jpg' | relative_url }} 800w, {{ p1600 | relative_url }} 1600w, {{ base | append: '-2400.jpg' | relative_url }} 2400w" alt="" width="1600" height="1000" fetchpriority="high" decoding="async">
+  </picture>
+  {%- elsif img_file %}
+  <img src="{{ img | relative_url }}" alt="" fetchpriority="high" decoding="async">
+  {%- else %}
+  <div class="opener__placeholder"></div>
+  {%- endif %}
+</div>
+<div class="opener__scrim" aria-hidden="true"></div>
+<div class="opener__grain" aria-hidden="true"></div>

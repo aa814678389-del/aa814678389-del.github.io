@@ -1,0 +1,21 @@
+{%- comment -%}
+  Decision card: the options you considered, the one you chose and why, and why the others lost.
+  Separate list items with "|".
+
+  {% include decision.html title="Fix the source or the output?" options="Correct generated designs|Tune prompts|Restructure the docs" chosen="Restructure the docs" why="It scales, and it helps people too." rejected="Correct generated designs: never scales|Tune prompts: brittle, hides the real gap" %}
+{%- endcomment -%}
+{%- assign options = include.options | split: "|" -%}
+{%- assign rejected = include.rejected | split: "|" -%}
+<div class="decision">
+<p class="label decision__eyebrow">Decision</p>
+<h3 class="decision__title">{{ include.title }}</h3>
+{%- if options.size > 0 %}
+<div class="decision__options"><p class="label">Options considered</p><ul class="decision__chips" role="list">{% for o in options %}<li class="chip{% if o == include.chosen %} chip--chosen{% endif %}">{{ o | strip }}{% if o == include.chosen %}<span class="visually-hidden"> (chosen)</span>{% endif %}</li>{% endfor %}</ul></div>
+{%- endif %}
+<dl class="decision__grid">
+<div class="decision__chosen"><dt class="label">Chosen</dt><dd><strong>{{ include.chosen }}.</strong> {{ include.why }}</dd></div>
+{%- if rejected.size > 0 %}
+<div class="decision__rejected"><dt class="label">Rejected</dt><dd><ul role="list">{% for r in rejected %}<li>{{ r | strip }}</li>{% endfor %}</ul></dd></div>
+{%- endif %}
+</dl>
+</div>

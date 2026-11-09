@@ -2,7 +2,7 @@
 
 Live at **https://agendel404.github.io** (repository `agendel404/agendeldesign.com`).
 
-Portfolio site for Andrew Gendel. Plain HTML, CSS and ~2 KB of JavaScript, published with GitHub Pages.
+Portfolio site for Andrew Gendel. Plain HTML, CSS and ~4 KB of JavaScript, published with GitHub Pages.
 You never run a build: push to `main` and GitHub publishes the site in about a minute.
 
 ---
@@ -11,9 +11,11 @@ You never run a build: push to `main` and GitHub publishes the site in about a m
 
 | To change… | Edit this file |
 |---|---|
-| Hero line, bio, email, LinkedIn, resume link, "Let's talk" text | `_data/profile.yml` |
+| Opener headline and line breaks, intro, bio, location, email, LinkedIn, resume link, "Let's talk" text | `_data/profile.yml` |
+| Opener photo | add `assets/img/hero.jpg` (see "Opener image" below) |
 | Career timeline | `_data/timeline.yml` |
-| Writing & talks (hidden while empty) | `_data/writing.yml` |
+| "Where I've worked" cards | `_data/workplaces.yml` |
+| Featured writing and talks (hidden while empty) | `_data/writing.yml` |
 | A case study | `_case_studies/<slug>.md` |
 | Resume | replace `assets/resume/andrew-gendel-resume.pdf` (keep the file name) |
 | Colors, fonts, spacing | `assets/css/tokens.css` |
@@ -24,7 +26,7 @@ You never run a build: push to `main` and GitHub publishes the site in about a m
 Each case study is one Markdown file in `_case_studies/`. The file name becomes the URL:
 `helios-adoption.md` → `agendeldesign.com/work/helios-adoption/`.
 
-The block between the `---` lines at the top fills the home page card and the "At a glance" panel:
+The block between the `---` lines at the top fills the opener (title, Role/Team/Timeline/Disciplines), the outcome strip, and the home page card:
 
 ```yaml
 title: Growing Helios adoption from 65% to 92%
@@ -35,19 +37,22 @@ team: The Helios team
 timeline: 2023–2025
 featured: true                          # show on the home page
 order: 3                                # position on the home page
-metrics:                                # 2–4 is best; the first one shows on the card
+metrics:                                # outcome strip: 2–4 results; the first one shows on the card
   - { value: "92%", label: "Helios adoption, up from 65%" }
 cover: /assets/img/helios-adoption/cover.svg
 cover_alt: "Describe what the image shows"
 cover_width: 1200                       # the image's real size in pixels
 cover_height: 750
 cover_panel: true                       # put diagrams on the paper panel
+# hero: /assets/img/helios-adoption/hero.jpg  # optional opener photo; otherwise the cover diagram is used
+# og_image: /assets/img/og/helios-adoption.jpg  # optional; this is the default
 # thumb_video: /assets/video/helios-adoption/loop.webm       # optional
 # thumb_video_mp4: /assets/video/helios-adoption/loop.mp4    # optional fallback
 ```
 
-Below that, write normal Markdown. Keep the six `##` sections (Problem, My role, Decision, System and approach,
-Results and adoption, What I'd do next). The "On this page" list builds itself from your `##` headings.
+Below that, write normal Markdown with these `##` sections, in order:
+Context, Problem, Role, Decisions, System and approach, Evidence, Results and adoption, What went wrong, What I'd do next.
+The "On this page" list and section numbers build themselves from your `##` headings.
 
 ### Building blocks you can paste into a case study
 
@@ -56,6 +61,14 @@ Results and adoption, What I'd do next). The "On this page" list builds itself f
 
 {% include before-after.html before="/assets/img/slug/before.png" before_alt="…" after="/assets/img/slug/after.png" after_alt="…" width="1200" height="800" caption="…" %}
 
+{% include decision.html title="Where to fix off-system output" options="Option A|Option B|Option C" chosen="Option C" why="Why it won." rejected="Option A: why not|Option B: why not" %}
+
+{% include quote.html text="A line worth pulling out." cite="Name, role" %}
+
+{% include callout.html title="Why it mattered" text="One or two sentences." %}
+
+{% include video.html src="/assets/video/slug/clip.webm" mp4="/assets/video/slug/clip.mp4" poster="/assets/img/slug/clip.jpg" width="1280" height="800" alt="What the clip shows" caption="…" %}
+
 {% include metrics.html %}
 
 {% include todo.html note="TODO (Roblox review): what to check" %}
@@ -63,6 +76,7 @@ Results and adoption, What I'd do next). The "On this page" list builds itself f
 
 - **Alt text is required.** If you leave it out, the page shows a yellow "Missing alt text" box. Use `alt=""` only for purely decorative images.
 - **TODO notes** show as yellow boxes in the preview and **block publishing** until you delete them.
+- **Videos never autoplay.** They play while hovered or focused, and always show a Play/Pause button.
 
 ### Adding a new case study
 
@@ -70,6 +84,27 @@ Results and adoption, What I'd do next). The "On this page" list builds itself f
 2. Make an image folder: `assets/img/feedback-to-pull-requests/`.
 3. Edit the front matter and text. Set `featured: true` and an `order` to show it on the home page.
    The home page shows every featured case study, so set `featured: false` on one if you want to keep it to three.
+
+## Opener image
+
+The home opener shows `assets/img/hero.jpg` behind a dark scrim and film grain; until that file exists, a cool
+ink gradient shows instead. The scrim keeps white text readable (WCAG AA) over any photo, even a white one.
+
+For fast loading, also add resized copies next to it. When `hero-1600.jpg` exists, the site serves the right size automatically:
+
+| File | Width | Notes |
+|---|---|---|
+| `hero-800.jpg`, `hero-1600.jpg`, `hero-2400.jpg` | 800 / 1600 / 2400 px | JPG quality ~72 (required for the responsive set) |
+| `hero-800.webp`, `hero-1600.webp`, `hero-2400.webp` | same | optional |
+| `hero-800.avif`, `hero-1600.avif`, `hero-2400.avif` | same | optional, smallest |
+
+squoosh.app can make all of these in the browser. Use your own photo; the image is decorative, so it needs no alt text.
+
+## Social preview images
+
+`assets/img/og/` holds the 1200×630 images LinkedIn, Slack and others show when someone shares a link:
+`home.jpg` for the home page and `<slug>.jpg` for each case study. They're screenshots of each page's opener.
+Replace them whenever you change a title or add a hero photo.
 
 ## Images and video
 
@@ -87,7 +122,7 @@ No tools run on the server, so optimize images when you export them:
 
 `scripts/check.sh` fails if any of these are still in your content:
 
-- `[X%]` or `[X]` number placeholders
+- `[X]`, `[X%]` or any `[X …]` placeholder
 - `TODO` notes
 - the placeholder LinkedIn URL (`YOUR-HANDLE`)
 - the placeholder resume PDF
@@ -115,8 +150,12 @@ Then each time:
 bash scripts/preview.sh
 ```
 
-Open http://localhost:4000. The preview runs the pre-publish check first and prints a warning if anything is left,
-but still serves the site so you can review drafts.
+Open http://localhost:4000. The preview runs the pre-publish check first and **stops** if any `[X]` placeholder,
+TODO, or placeholder file is left. To look at a draft anyway:
+
+```bash
+bash scripts/preview.sh --draft
+```
 
 ---
 

@@ -1,0 +1,5 @@
+{%- comment -%} Callout.  {% include callout.html title="Why it mattered" text="One or two sentences. *Markdown* works." %} {%- endcomment -%}
+<aside class="callout" role="note">
+<p class="label callout__title">{{ include.title | default: "Note" }}</p>
+<p>{{ include.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
+</aside>

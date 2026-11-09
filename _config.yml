@@ -34,8 +34,10 @@ kramdown:
   smart_quotes: ["apos", "apos", "quot", "quot"]
 
 plugins:
-  - jekyll-seo-tag
   - jekyll-sitemap
+
+# Default social-preview image (1200×630). Case studies use /assets/img/og/<slug>.jpg.
+og_image: /assets/img/og/home.jpg
 
 exclude:
   - README.md

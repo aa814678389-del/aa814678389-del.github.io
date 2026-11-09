@@ -1,5 +1,5 @@
 ---
-# ─── Card + "At a glance" (all of this shows on the page) ───
+# ─── Opener, card, and outcome strip (all of this shows on the page) ───
 title: Making Design Assist output match Figma, web, and Luau
 summary: >-
   I restructured the Foundation Design Kit's documentation into machine-readable
@@ -11,6 +11,7 @@ timeline: Jan 2026 – present
 featured: true
 order: 1
 
+# Outcome strip: 2–4 results. The first one also shows on the home page card.
 metrics:
   - value: "2"
     label: surfaces kept in parity, one for people and one for AI
@@ -18,6 +19,7 @@ metrics:
     label: platforms the guidance covers (Figma, web, Luau)
 
 # ─── Images ───
+# hero: /assets/img/design-assist-component-parity/hero.jpg   # optional photo for the opener; otherwise the cover is used
 cover: /assets/img/design-assist-component-parity/cover.svg
 cover_alt: >-
   Diagram: design system standards become a structured spec, which an AI design
@@ -25,29 +27,30 @@ cover_alt: >-
 cover_width: 1200
 cover_height: 750
 cover_panel: true
-# thumb_video: /assets/video/design-assist-component-parity/loop.webm   # optional, plays on hover
+# thumb_video: /assets/video/design-assist-component-parity/loop.webm   # optional, plays on hover/focus
 ---
+
+## Context
+
+The Foundation Design Kit (FDK) is Roblox's design system, used in Figma, on the web, and in Luau. Its reference material lives on two surfaces: a website and Figma library for people, and an AI-readable version that feeds Design Assist, Roblox's AI design tool. Designers use Design Assist to generate layouts, so the quality of its output depends on the quality of what it reads.
 
 ## Problem
 
-An AI design tool is only as consistent as what it learns from. The Foundation Design Kit (FDK) is used in Figma, on the web, and in Luau, and its guidance was written for people: helpful prose, but not structured for a machine to follow.
+An AI design tool is only as consistent as what it learns from. The FDK's guidance was written for people: helpful prose, but not structured for a machine to follow.
 
 When a generator reads documentation like that, small gaps turn into visible drift: a component used where the guidelines say not to, or a layout that looks close to the system but isn't on it. Designers then spend time correcting generated work instead of building on it.
 
-## My role
+## Role
 
-I own the structure of the FDK's reference material across two surfaces:
+I own the structure of the FDK's reference material across both surfaces. I partnered with design, engineering, and content design to decide what the guidance says and how it's structured.
 
-- the human-facing FDK website and Figma library
-- an AI-readable version that feeds Design Assist, Roblox's AI design tool
+## Decisions
 
-I partnered with design, engineering, and content design to decide what that guidance says and how it's structured.
+{% include decision.html title="Where to fix off-system output" options="Correct generated designs one by one|Tune the AI tool's prompts|Restructure the documentation itself" chosen="Restructure the documentation itself" why="Fixing the source fixes every future output, and the clearer structure helps people reading the docs too." rejected="Correct generated designs one by one: never scales|Tune the AI tool's prompts: brittle, and leaves the real gaps in the docs" %}
 
-## Decision
+{% include decision.html title="One set of docs or two" options="Separate docs for people and for AI|One standard, two surfaces kept in parity" chosen="One standard, two surfaces kept in parity" why="The human and AI versions can never tell two different stories." rejected="Separate docs for people and for AI: they drift apart, and every fix has to be made twice" %}
 
-**Fix the source, not the output.** Correcting generated designs one at a time would never scale. Instead, we made the documentation itself machine-readable, and kept the human and AI versions in parity so they never tell two different stories.
-
-The trade-off was up-front work: component documentation, usage rules, and patterns all had to be restructured before the tool improved. I chose that over prompt tweaks because the same restructuring also makes the docs clearer for people.
+{% include todo.html note="TODO (Roblox review): confirm these were the options you actually weighed, and that describing them publicly is fine with Roblox." %}
 
 ## System and approach
 
@@ -56,15 +59,21 @@ The trade-off was up-front work: component documentation, usage rules, and patte
 3. **Guidelines written for both readers.** Component architecture and WCAG 2.2 AA accessibility guidance are written so human designers and AI agents can act on them.
 4. **A faster path from gap to fix.** I built an AI-powered workflow that turns design system feedback into draft pull requests, so reported gaps reach the published docs sooner.
 
-{% include figure.html src="/assets/img/design-assist-component-parity/parity.svg" alt="Before: the same component appears at three different sizes and shapes in Figma, web, and Luau. After: it is identical on all three." width="1200" height="700" caption="Illustrative only: the goal is the same component, the same way, on every platform." panel="true" wide="true" %}
+{% include callout.html title="Why parity matters" text="If the docs people read and the guidance the AI reads disagree, designers stop trusting both. Keeping them in parity is what makes generated work safe to build on." %}
+
+## Evidence
+
+{% include figure.html src="/assets/img/design-assist-component-parity/parity.svg" alt="Before: the same component appears at three different sizes and shapes in Figma, web, and Luau. After: it is identical on all three." width="1200" height="700" caption="Illustrative only, not a real component: the goal is the same component, the same way, on every platform." panel="true" wide="true" %}
 
 ## Results and adoption
-
-{% include metrics.html %}
 
 - Designers using Design Assist generate on-system layouts out of the box, without correcting off-system output by hand.
 - One set of standards serves both the people reading the docs and the AI generating designs.
 - Feedback about gaps now becomes a draft documentation update instead of a ticket waiting for someone to write it.
+
+## What went wrong
+
+{% include todo.html note="TODO: add one or two honest setbacks, such as something that took longer than planned, a structure you had to rework, or a gap the first version missed, and what you changed. Keep it general enough to clear with Roblox." %}
 
 ## What I'd do next
 
